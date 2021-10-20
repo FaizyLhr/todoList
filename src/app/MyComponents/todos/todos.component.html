@@ -1,0 +1,24 @@
+<!-- <p>todos works!</p> -->
+
+<!-- Display All Here -->
+<!-- <ul *ngFor="let todo of todos">
+  <li>{{ todo.sno }} - {{ todo.title }} - {{ todo.desc }}</li>
+</ul> -->
+
+<!-- Add todo Section -->
+<section>
+  <app-add-todo (todoAdd)="addTodo($event)"></app-add-todo>
+</section>
+
+<!-- Pass to Other Component -->
+<h1 class="text-center mb-3">Todo List By Muhammad Feezan</h1>
+<h4>Your Todos</h4>
+
+<div *ngIf="this.todos.length === 0; else elseBlock">No Todos to Display</div>
+
+<ng-template #elseBlock>
+  <div *ngFor="let todo of todos">
+    <app-todo-item [todo]="todo" (todoDelete)="deleteTodo($event)">
+    </app-todo-item>
+  </div>
+</ng-template>
